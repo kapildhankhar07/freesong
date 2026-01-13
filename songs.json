@@ -1,0 +1,23 @@
+[
+  {
+    "songName": "Ego Killer",
+    "artist": "Dhanda",
+    "playlists": ["Chill", "Night","ride"],
+    "image": "images/download.jpg",
+    "audio": "songs/ego_killer.mp3"
+  },
+  {
+    "songName": "up to u",
+    "artist": "Dhanda",
+    "playlists": ["Chill", "Night"],
+    "image": "images/up to u.jpg",
+    "audio": "songs/up to u.mp3"
+  },
+  {
+    "songName": "Russian Bandana",
+    "artist": "Dhanda",
+    "playlists": ["Chill", "Night"],
+    "image": "images/rb.jpg",
+    "audio": "songs/rb.mp3"
+  }
+]
