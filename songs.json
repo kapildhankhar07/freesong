@@ -2,22 +2,178 @@
   {
     "songName": "Ego Killer",
     "artist": "Dhanda",
-    "playlists": ["Chill", "Night","ride"],
+    "playlists": ["Chill", "action","ride"],
     "image": "images/download.jpg",
     "audio": "songs/ego_killer.mp3"
   },
   {
     "songName": "up to u",
     "artist": "Dhanda",
-    "playlists": ["Chill", "Night"],
+    "playlists": ["Chill", "action"],
     "image": "images/up to u.jpg",
     "audio": "songs/up to u.mp3"
   },
   {
     "songName": "Russian Bandana",
     "artist": "Dhanda",
-    "playlists": ["Chill", "Night"],
+    "playlists": ["Chill", "action"],
     "image": "images/rb.jpg",
     "audio": "songs/rb.mp3"
   }
+  ,
+  {
+    "songName": "Jugraafiya",
+    "artist": "Udit Narayan & Shreya Ghoshal",
+    "playlists": ["Chill", "Night"],
+    "image": "images/Jugraafiya.webp",
+    "audio": "songs/jugraafiya.mp3"
+  },
+  {
+    "songName": "AMBARSARIYA",
+    "artist": "SONA MOHAPATRA, RAM SAMPATH, & MUNNAZ",
+    "playlists": ["Chill", "Night"],
+    "image": "images/AMBARSARIYA.webp",
+    "audio": "songs/AMBARSARIYA.mp3"
+  },
+  {
+    "songName": "Ajj Din Chadheya",
+    "artist": "Pritam & Rahat Fateh Ali Khan",
+    "playlists": ["Chill", "Night"],
+    "image": "images/Ajj Din Chadheya.webp",
+    "audio": "songs/Ajj Din Chadheya.mp3"
+  },
+  {
+    "songName": "4 Days",
+    "artist": "Dhanda",
+    "playlists": ["Chill", "action"],
+    "image": "images/4 Days.webp",
+    "audio": "songs/4 Days.mp3"
+  },
+  {
+    "songName": "Dhoonde Akhiyaan",
+    "artist": "Yasser Desai, Altamash Faridi, & Rashmi Virag",
+    "playlists": ["Chill", "Night"],
+    "image": "images/Dhoonde Akhiyaan.webp",
+    "audio": "songs/Dhoonde Akhiyaan.mp3"
+  },
+  {
+    "songName": "Sajdaa",
+    "artist": "Shankar Ehsaan Loy, Rahat Fateh Ali Khan, Shan..",
+    "playlists": ["Chill", "Night"],
+    "image": "images/Sajdaa.webp",
+    "audio": "songs/Sajdaa.mp3"
+  },
+  {
+    "songName": "TAINU LEKE",
+    "artist": "SONU NIGAM, MAHALAKSHMI IYER & SAMEER",
+    "playlists": ["Chill", "Night"],
+    "image": "images/TAINU LEKE.webp",
+    "audio": "songs/TAINU LEKE.mp3"
+  },
+  {
+    "songName": "Aahun Aahun",
+    "artist": "Pritam, Neeraj Shridhar, Master Saleem, and Suz...",
+    "playlists": ["Chill", "Night"],
+    "image": "images/Aahun Aahun.webp",
+    "audio": "songs/Aahun Aahun.mp3"
+  },
+  {
+    "songName": "OH GIRL YOU'RE MINE",
+    "artist": "TARUN SAGAR, ALYSSA MENDONSA, LOY MEN",
+    "playlists": ["Chill", "Night"],
+    "image": "images/OH GIRL YOU'RE MINE.webp",
+    "audio": "songs/OH GIRL YOU'RE MINE.mp3"
+  },
+  {
+    "songName": "Khudaya Khair",
+    "artist": "Akriti Kakkar, Monali, & Soham",
+    "playlists": ["Chill", "Night"],
+    "image": "images/Khudaya Khair.webp",
+    "audio": "songs/Khudaya Khair.mp3"
+  },
+  {
+    "songName": "Tum Tak",
+    "artist": "Javed Ali, Pooja Vaidyanath & Keerthi Sagathia",
+    "playlists": ["Chill", "Night"],
+    "image": "images/Tum Tak.webp",
+    "audio": "songs/Tum Tak.mp3"
+  },
+  {
+    "songName": "Dhokha Dhadi",
+    "artist": "Pritam, Arijit Singh, & Palak Muchha",
+    "playlists": ["Chill", "Night"],
+    "image": "images/Dhokha Dhadi.webp",
+    "audio": "songs/Dhokha Dhadi.mp3"
+  },
+  {
+    "songName": "SAJDE",
+    "artist": "K.K., SUNIDHI CHAUHAN, PRITAM & IRSHAD",
+    "playlists": ["Chill", "Night"],
+    "image": "images/SAJDE.webp",
+    "audio": "songs/SAJDE.mp3"
+  },
+  {
+    "songName": "O Maahi",
+    "artist": "Arijit Singh",
+    "playlists": ["Chill", "Night"],
+    "image": "images/O Maahi.webp",
+    "audio": "songs/O Maahi.mp3"
+  },
+  {
+    "songName": "Rishte Naate",
+    "artist": "Rahat Fateh Ali Khan",
+    "playlists": ["Chill", "Night"],
+    "image": "images/Rishte Naate.webp",
+    "audio": "songs/Rishte Naate.mp3"
+  },
+  {
+    "songName": "Lutt Putt Gaya",
+    "artist": "Arijit Singh",
+    "playlists": ["Chill", "Night"],
+    "image": "images/Lutt Putt Gaya.webp",
+    "audio": "songs/Lutt Putt Gaya.mp3"
+  },
+  {
+    "songName": "Ishq Hai",
+    "artist": "Anurag Saikia, Raj Shekhar, Romy & Amarabha B",
+    "playlists": ["Chill", "Night"],
+    "image": "images/Ishq Hai.webp",
+    "audio": "songs/Ishq Hai.mp3"
+  },
+  {
+    "songName": "Chor Bazaari",
+    "artist": "Pritam, Neeraj Shridhar & Sunidhi Chauhan",
+    "playlists": ["Chill", "Night"],
+    "image": "images/Chor Bazaari.webp",
+    "audio": "songs/Chor Bazaari.mp3"
+  },
+  {
+    "songName": "Haule Haule",
+    "artist": "Sukhwinder Singh",
+    "playlists": ["Chill", "Night"],
+    "image": "images/Haule Haule.webp",
+    "audio": "songs/Haule Haule.mp3"
+  },
+  {
+    "songName": "Teri Ore",
+    "artist": "Akhil Sachdeva & Tulsi Kumar",
+    "playlists": ["Chill", "Night"],
+    "image": "images/Teri Ore.webp",
+    "audio": "songs/Teri Ore .mp3"
+  },
+  {
+    "songName": "TUM SE HI",
+    "artist": "MOHIT CHAUHAN, PRITAM & IRSHAD KAMIL",
+    "playlists": ["Chill", "Night"],
+    "image": "images/TUM SE HI.webp",
+    "audio": "songs/TUM SE HI.mp3"
+  },
+  {
+    "songName": "Not Guilty",
+    "artist": "Dhanda",
+    "playlists": ["chill","action"],
+    "image": "images/Not Guilty.webp",
+    "audio": "songs/Not Guilty.mp3"
+  }
+
 ]
