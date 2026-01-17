@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: system-ui, sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -21,7 +21,7 @@ body {
   display: flex;
   gap: 8px;
   padding: 10px;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.95);
   z-index: 10;
 }
 
@@ -45,17 +45,14 @@ body {
 .reels {
   margin-top: 60px;
   height: calc(100vh - 120px);
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .reel {
-  height: calc(100vh - 120px);
-  scroll-snap-align: start;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  animation: fade 0.4s ease;
 }
 
 .reel img {
@@ -65,7 +62,7 @@ body {
 }
 
 .reel h2 {
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .reel p {
@@ -78,11 +75,11 @@ body {
   bottom: 0;
   width: 100%;
   height: 60px;
+  background: rgba(0,0,0,0.95);
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 10px;
-  background: rgba(0,0,0,0.9);
 }
 
 #playPause {
@@ -98,19 +95,29 @@ body {
   flex: 1;
 }
 
-/* PLAYLIST */
-#playlistScreen {
+/* LIST SCREENS */
+#playlistScreen,
+#allSongsScreen {
   margin-top: 60px;
   height: calc(100vh - 60px);
   overflow-y: auto;
 }
 
-.playlist-item {
+.list-item {
   padding: 16px;
   border-bottom: 1px solid #333;
   cursor: pointer;
 }
 
+.list-item:hover {
+  background: #222;
+}
+
 .hidden {
   display: none;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
 }

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Music Reels App</title>
+<title>Music Reels</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,15 +11,19 @@
 <!-- TOP BAR -->
 <div class="topbar">
   <button id="homeBtn">🏠</button>
-  <input id="searchInput" type="text" placeholder="Search song / artist / playlist">
+  <input id="searchInput" placeholder="Search song / artist">
   <button id="playlistBtn">📂</button>
+  <button id="allSongsBtn">🎵</button>
 </div>
 
-<!-- REELS -->
+<!-- REEL VIEW -->
 <div id="reels" class="reels"></div>
 
-<!-- PLAYLIST SCREEN -->
+<!-- PLAYLIST VIEW -->
 <div id="playlistScreen" class="hidden"></div>
+
+<!-- ALL SONGS VIEW -->
+<div id="allSongsScreen" class="hidden"></div>
 
 <!-- PLAYER -->
 <div class="player">
@@ -29,7 +33,7 @@
   <span id="duration">0:00</span>
 </div>
 
-<audio id="audio"></audio>
+<audio id="audio" preload="auto"></audio>
 
 <script src="script.js"></script>
 </body>

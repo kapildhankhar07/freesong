@@ -1,5 +1,6 @@
 const reels = document.getElementById("reels");
 const playlistScreen = document.getElementById("playlistScreen");
+const allSongsScreen = document.getElementById("allSongsScreen");
 const audio = document.getElementById("audio");
 
 const playPause = document.getElementById("playPause");
@@ -9,6 +10,7 @@ const durationEl = document.getElementById("duration");
 
 const homeBtn = document.getElementById("homeBtn");
 const playlistBtn = document.getElementById("playlistBtn");
+const allSongsBtn = document.getElementById("allSongsBtn");
 const searchInput = document.getElementById("searchInput");
 
 let allSongs = [];
@@ -24,56 +26,70 @@ fetch("songs.json")
     loadHome();
   });
 
-/* HOME (RANDOM SONGS) */
+/* HOME = RANDOM PLAY */
 function loadHome() {
   activeSongs = shuffle([...allSongs]);
+  currentIndex = 0;
+  renderReel(currentIndex);
   showReels();
 }
 
-/* SHOW REELS */
-function showReels() {
+/* RENDER SINGLE SONG */
+function renderReel(index) {
   reels.innerHTML = "";
-  reels.classList.remove("hidden");
-  playlistScreen.classList.add("hidden");
+  const song = activeSongs[index];
+  if (!song) return;
 
-  if (activeSongs.length === 0) {
-    reels.innerHTML = "<p style='padding:20px'>No songs found</p>";
-    audio.pause();
-    return;
-  }
-
-  activeSongs.forEach(song => {
-    const div = document.createElement("div");
-    div.className = "reel";
-    div.innerHTML = `
-      <img src="${song.image}">
+  reels.innerHTML = `
+    <div class="reel">
+      <img loading="lazy" src="${song.image}">
       <h2>${song.songName}</h2>
       <p>${song.artist}</p>
-    `;
-    reels.appendChild(div);
-  });
+    </div>
+  `;
 
-  playSong(0);
+  playSong(index);
 }
 
-/* AUTO PLAY ON SCROLL */
-reels.addEventListener("scroll", () => {
-  const index = Math.round(reels.scrollTop / reels.clientHeight);
-  if (index !== currentIndex && activeSongs[index]) {
-    playSong(index);
-  }
-});
-
-/* PLAY SONG */
+/* FAST AUDIO PLAY */
 function playSong(index) {
   currentIndex = index;
+  audio.pause();
   audio.src = activeSongs[index].audio;
-  audio.play();
+  audio.load();
+  audio.play().catch(() => {});
   isPlaying = true;
   playPause.textContent = "⏸";
 }
 
-/* PLAY / PAUSE */
+/* SWIPE CONTROL */
+let startY = 0;
+reels.addEventListener("touchstart", e => {
+  startY = e.touches[0].clientY;
+});
+reels.addEventListener("touchend", e => {
+  const endY = e.changedTouches[0].clientY;
+  if (startY - endY > 50) nextSong();
+  if (endY - startY > 50) prevSong();
+});
+
+/* NEXT / PREV */
+function nextSong() {
+  currentIndex++;
+  if (currentIndex >= activeSongs.length) {
+    activeSongs = shuffle([...allSongs]);
+    currentIndex = 0;
+  }
+  renderReel(currentIndex);
+}
+
+function prevSong() {
+  currentIndex =
+    (currentIndex - 1 + activeSongs.length) % activeSongs.length;
+  renderReel(currentIndex);
+}
+
+/* PLAYER CONTROLS */
 playPause.onclick = () => {
   if (isPlaying) {
     audio.pause();
@@ -85,7 +101,7 @@ playPause.onclick = () => {
   isPlaying = !isPlaying;
 };
 
-/* TIMER + SEEK */
+/* PROGRESS */
 audio.ontimeupdate = () => {
   progress.value = (audio.currentTime / audio.duration) * 100 || 0;
   currentTimeEl.textContent = format(audio.currentTime);
@@ -97,64 +113,86 @@ progress.oninput = () => {
 };
 
 /* AUTO NEXT */
-audio.onended = () => {
-  if (currentIndex < activeSongs.length - 1) {
-    currentIndex++;
-    reels.children[currentIndex].scrollIntoView({ behavior: "smooth" });
-    playSong(currentIndex);
-  }
-};
+audio.onended = nextSong;
 
-/* PLAYLIST BUTTON */
+/* PLAYLIST SCREEN (UNCHANGED LOGIC) */
 playlistBtn.onclick = () => {
-  reels.classList.add("hidden");
-  playlistScreen.classList.remove("hidden");
+  showScreen(playlistScreen);
   playlistScreen.innerHTML = "";
 
-  const playlistSet = new Set();
-  allSongs.forEach(song => {
-    song.playlists.forEach(p => playlistSet.add(p));
-  });
+  const set = new Set();
+  allSongs.forEach(s => s.playlists.forEach(p => set.add(p)));
 
-  playlistSet.forEach(name => {
+  set.forEach(name => {
     const div = document.createElement("div");
-    div.className = "playlist-item";
+    div.className = "list-item";
     div.textContent = name;
-    div.onclick = () => loadPlaylist(name);
+    div.onclick = () => {
+      activeSongs = allSongs.filter(s => s.playlists.includes(name));
+      currentIndex = 0;
+      renderReel(0);
+      showReels();
+    };
     playlistScreen.appendChild(div);
   });
 };
 
-/* LOAD PLAYLIST */
-function loadPlaylist(name) {
-  activeSongs = allSongs.filter(song =>
-    song.playlists.includes(name)
-  );
-  showReels();
-}
+/* ALL SONGS (FIXED ✅) */
+allSongsBtn.onclick = () => {
+  showScreen(allSongsScreen);
+  allSongsScreen.innerHTML = "";
+
+  allSongs.forEach(song => {
+    const div = document.createElement("div");
+    div.className = "list-item";
+    div.textContent = `${song.songName} – ${song.artist}`;
+
+    div.onclick = () => {
+      // 🔥 FIRST play clicked song, THEN random
+      const rest = allSongs.filter(s => s !== song);
+      activeSongs = [song, ...shuffle(rest)];
+      currentIndex = 0;
+      renderReel(0);
+      showReels();
+    };
+
+    allSongsScreen.appendChild(div);
+  });
+};
 
 /* SEARCH */
-searchInput.addEventListener("input", () => {
+searchInput.oninput = () => {
   const q = searchInput.value.toLowerCase().trim();
+  if (!q) return loadHome();
 
-  if (q === "") {
-    loadHome();
-    return;
-  }
-
-  activeSongs = allSongs.filter(song =>
-    song.songName.toLowerCase().includes(q) ||
-    song.artist.toLowerCase().includes(q) ||
-    song.playlists.some(p => p.toLowerCase().includes(q))
+  activeSongs = allSongs.filter(s =>
+    s.songName.toLowerCase().includes(q) ||
+    s.artist.toLowerCase().includes(q)
   );
 
-  showReels();
-});
+  if (activeSongs.length) {
+    currentIndex = 0;
+    renderReel(0);
+  }
+};
 
-/* HOME BUTTON */
+/* HOME */
 homeBtn.onclick = loadHome;
 
-/* UTILS */
+/* HELPERS */
+function showScreen(screen) {
+  reels.classList.add("hidden");
+  playlistScreen.classList.add("hidden");
+  allSongsScreen.classList.add("hidden");
+  screen.classList.remove("hidden");
+}
+
+function showReels() {
+  reels.classList.remove("hidden");
+  playlistScreen.classList.add("hidden");
+  allSongsScreen.classList.add("hidden");
+}
+
 function shuffle(arr) {
   return arr.sort(() => Math.random() - 0.5);
 }
